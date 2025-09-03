@@ -3,24 +3,25 @@
 #
 #otherwise return the  original amount
 def main():
-    amount_due = "50"
-    amount_due = int(amount_due)
-    insert = int(input("Insert coin: "))
+    amount_due = 50  # Coke costs 50 cents
 
     while amount_due > 0:
         print("Amount Due:", amount_due)
         insert = int(input("Insert coin: "))
 
-
         # only accept 5, 10, or 25
         if insert in [5, 10, 25]:
             amount_due -= insert
+        else:
+            # Ignore invalid coins, don’t reduce amount_due
+            continue
 
-    # once amount_due <= 0, exit loop
+    # once amount_due <= 0, loop ends
     if amount_due < 0:
-        amount_due = amount_due*(-1)
-        print("Change Owed:", amount_due)
+        print("Change Owed:", abs(amount_due))
     else:
         print("Change Owed: 0")
 
+
 main()
+
